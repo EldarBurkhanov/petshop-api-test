@@ -1,0 +1,13 @@
+
+# Pytest cahche
+__pycache__/
+.pytest_cache/
+
+# Allure output
+allure_dir/
+
+# Compiled files
+*.pyc
+
+
+sandbox.py
