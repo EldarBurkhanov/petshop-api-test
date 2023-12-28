@@ -1,4 +1,4 @@
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ValidationError
 from typing import List
 
 
@@ -22,7 +22,16 @@ class Pet(BaseModel):
 
     @field_validator("status")
     def validate_color(cls, value):
-        if not value in ["sold", "available", "pending"]:
+        if value not in ["sold", "available", "pending"]:
             raise ValueError(f"Invalid status format {value}, should be sold/available/pending")
         return value
 
+
+class PetList(BaseModel):
+    pet_list_data: List[Pet]
+
+
+class ResponceBody(BaseModel):
+    code: int
+    type: str
+    message: str
