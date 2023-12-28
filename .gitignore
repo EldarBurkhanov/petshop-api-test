@@ -9,5 +9,5 @@ allure_dir/
 # Compiled files
 *.pyc
 
-
+tz.txt
 sandbox.py
