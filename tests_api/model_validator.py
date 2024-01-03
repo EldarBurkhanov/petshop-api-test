@@ -31,7 +31,7 @@ class PetList(BaseModel):
     pet_list_data: List[Pet]
 
 
-class ResponceBody(BaseModel):
+class ResponseBody(BaseModel):
     code: int
     type: str
     message: str

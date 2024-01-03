@@ -1,7 +1,7 @@
 import pytest
 import allure
 import requests
-from model_validator import ResponceBody
+from model_validator import ResponseBody
 
 
 API_URL = "/pet"
@@ -23,8 +23,8 @@ def test_change_pet(get_base_url, get_default_body, status, status_code, id, nam
     with allure.step(f"Verify the response status code is {status_code}"):
         assert data.status_code == status_code
 
-    with allure.step("Validate the response data against the ResponceBody model"):
-        assert ResponceBody(**data.json())
+    with allure.step("Validate the response data against the ResponseBody model"):
+        assert ResponseBody(**data.json())
 
 
 

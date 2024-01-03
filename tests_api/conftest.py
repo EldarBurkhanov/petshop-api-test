@@ -22,9 +22,13 @@ DEFAULT_BODY = {
             "status": "available"
            }
 
+
 """Hook for add custom marks"""
+
+
 def pytest_configure(config):
     config.addinivalue_line("markers", "delete_method: mark a test as a DELETE method test")
+
 
 @pytest.fixture
 def get_base_url():

@@ -5,6 +5,7 @@ from model_validator import Pet
 
 API_URL = "/pet"
 
+
 @allure.title("Test Create pet via POST Request")
 @allure.description("This test sends a POST request to createe a pet and check response body.")
 @pytest.mark.parametrize(
@@ -35,7 +36,9 @@ API_URL = "/pet"
                  "sold",
                  888,
                  marks=pytest.mark.skip(reason="My SKip")),
-])
+    ])
+
+
 def test_create_pet(get_base_url: str,
                     get_default_body: dict,
                     id: int,
@@ -62,9 +65,7 @@ def test_create_pet(get_base_url: str,
         assert data.status_code == status_code
 
     with allure.step("Validate response data"):
-        assert Pet(**data.json())
-
-    pet = Pet(**data.json())
+        pet = Pet(**data.json())
 
     with allure.step("Check pet id"):
         assert pet.id == id
