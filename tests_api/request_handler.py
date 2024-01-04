@@ -28,8 +28,8 @@ class RequestHandler:
         return data
 
     @staticmethod
-    def update_pet_by_id(name, status, id):
-        data = requests.post(f"{RequestHandler.BASE_URL}/{RequestHandler.PET_URL}/{id}",
+    def update_pet_by_id(name, status, pet_id):
+        data = requests.post(f"{RequestHandler.BASE_URL}/{RequestHandler.PET_URL}/{pet_id}",
                              data={"name": name, "status": status})
         return data
 
