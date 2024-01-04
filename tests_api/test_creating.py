@@ -1,9 +1,8 @@
 import pytest
 import allure
-import requests
+from request_handler import RequestHandler
 from model_validator import Pet
 
-API_URL = "/pet"
 
 @allure.title("Test Create pet via POST Request")
 @allure.description("This test sends a POST request to createe a pet and check response body.")
@@ -56,7 +55,7 @@ def test_create_pet(get_base_url: str,
     body["status"] = status
 
     with allure.step("Send POST to create pet"):
-        data = requests.post(get_base_url + API_URL, json=body)
+        data = RequestHandler.post_pet(body)
 
     with allure.step("Check status code"):
         assert data.status_code == status_code
@@ -97,7 +96,7 @@ def test_empty_dict(get_base_url):
     body = {}
 
     with allure.step("Send POST to create pet with empty dict"):
-        data = requests.post(get_base_url + API_URL, json=body)
+        data = RequestHandler.post_pet(body)
 
     with allure.step("Check status code"):
         assert data.status_code == 405
@@ -108,7 +107,7 @@ def test_empty_dict(get_base_url):
 def test_no_dict(get_base_url):
 
     with allure.step("Send POST to create pet without dict"):
-        data = requests.post(get_base_url + API_URL)
+        data = RequestHandler.post_pet(None)
 
     with allure.step("Check status code"):
         assert data.status_code == 415
