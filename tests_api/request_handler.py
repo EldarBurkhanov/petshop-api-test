@@ -39,7 +39,3 @@ class RequestHandler:
         return data
 
 
-a = RequestHandler()
-
-
-print(a.find_pet_by_status("sold").json())
